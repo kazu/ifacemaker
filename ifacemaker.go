@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/vburenin/ifacemaker/maker"
+	"github.com/kazu/ifacemaker/maker"
 	"github.com/mkideal/cli"
 )
 
