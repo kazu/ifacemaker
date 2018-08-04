@@ -33,7 +33,15 @@ func run(args *cmdlineArgs) {
 		}
 		sparsed := maker.ParseStruct(src, args.CopyDocs, args.ExcludeMethods)
 		for s, parsed := range sparsed {
-			parseds[s] = parsed
+			if parseds[s] != nil {
+				if parseds[s].Embedded != nil {
+					parseds[s].Embedded = append(parseds[s].Embedded, parsed.Embedded...)
+				}
+
+				parseds[s].Methods = append(parseds[s].Methods, parsed.Methods...)
+				parseds[s].Imports = append(parseds[s].Imports, parsed.Imports...)
+			}
+
 		}
 	}
 	var methods []maker.Method
